@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="Style.js" async></script>
+  <title>Calculadora de Cuotas</title>
+</head>
+<body>
+
+  <h1>Calculadora de Cuotas</h1>
+
+  <label for="monto">Monto Total:</label>
+  <input type="number" id="monto" placeholder="Ingrese el monto total">
+
+  <br>
+
+  <label for="cuotas">Número de Cuotas:</label>
+  <input type="number" id="cuotas" placeholder="Ingrese el número de cuotas">
+
+  <br>
+
+  <button onclick="calcularCuotas()">Calcular Cuotas</button>
+
+  <script>
+    // Función para calcular pagos en cuotas
+    function calcularCuotas() {
+      var monto = document.getElementById("monto").value;
+      var cuotas = document.getElementById("cuotas").value;
+
+      // Verificar que los valores ingresados sean válidos
+      if (monto <= 0 || cuotas <= 0) {
+        console.log("Por favor, ingrese valores válidos.");
+        return;
+      }
+
+      // Convertir los valores ingresados a números
+      monto = parseFloat(monto);
+      cuotas = parseInt(cuotas);
+
+      // Calcular el monto de cada cuota
+      var montoPorCuota = monto / cuotas;
+
+      // Imprimir el detalle de las cuotas
+      console.log("Detalle de pagos en cuotas:");
+      for (var i = 1; i <= cuotas; i++) {
+        console.log("Cuota " + i + ": $" + montoPorCuota.toFixed(2));
+      }
+    }
+  </script>
+
+</body>
+</html>
